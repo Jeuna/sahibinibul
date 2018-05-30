@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Login{% endblock %}
+
+{% block body %}
+<container class="center">
+<div class="jumbotron center">
+      <form novalidate="novalidate"method="post" class="form-signin">
+          {% csrf_token %}
+        <h2 class="form-signin-heading">Oturum aç</h2>
+        <label class="sr-only">{{form.username}}</label>
+        <input type="text" id="inputUsername" name = "username"class="form-control col-sm-3 text" placeholder="Kullanıcı Adı" >
+        <label for="inputPassword" class="sr-only">{{form.password}}</label>
+        <input type="password" id="inputPassword" name ="password"class="form-control col-sm-3" placeholder="Şifre">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Beni Hatırla
+          </label>
+            <a href="/forgot"> Şifreni mi unuttun ? </a>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block col-sm-3 center" type="submit">Oturum aç</button>
+      </form>
+</div>
+</container>
+    <!-- /container -->
+
+{% endblock %}

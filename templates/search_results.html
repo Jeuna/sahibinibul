@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Arama Sonuçları{% endblock %}
+
+    {% block body %}
+        <p>Aradığınız plaka numarası: <strong>{{query}}</strong></p>
+
+        <p>Aracın sahip olduğu özellikler bunlar ?</p>
+
+        {% if arabalar %}
+        <p>Araç özellikleri </p>
+        <section class="jumbotron text-center">
+            <div class="container">
+        {% for a in arabalar %}
+                <ul class="list-group" >
+                    <li class="list-group-item">Araç Sahibi :{{ a.sahip }}</li>
+                    <li class="list-group-item">Araç Rengi: {{ a.renk }}</li>
+                    <li class="list-group-item">Araç Modeli: {{ a.model }}</li>
+                    <li class="list-group-item">Araç Model Yılı:{{ a.model_yili }}</li>
+                </ul>
+
+            </div>
+            {% endfor %}
+        <form  action="/bildirim/" method="POST">{% csrf_token %}
+            <button type="submit" class="btn btn-lg btn-primary" name="b" value="b" >Evet, bildirim gönder</button>
+        </form>
+        {% else %}
+            <p>Aramış olduğnuz plakada bir araç bulunamadı.</p>
+        {% endif %}
+    {% endblock %}
+      </section>
+
+
+
+
